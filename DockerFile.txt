@@ -1,0 +1,5 @@
+
+FROM amazoncorretto:11
+EXPOSE 8080
+ADD target/ip-address-management-api.jar ip-address-management-api.jar
+ENTRYPOINT ["java", "-jar", "/ip-address-management-api.jar"]
