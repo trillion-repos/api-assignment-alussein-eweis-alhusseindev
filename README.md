@@ -21,7 +21,7 @@ Create a simple IP Address Management REST API on top of any data store. It will
 * Docker
 
 
-## Docker Image
+### Docker Image
 I pushed the the Docker image to Docker Hub, it can be accessed from here:
 
 https://hub.docker.com/repository/docker/082497/ip-management-container
