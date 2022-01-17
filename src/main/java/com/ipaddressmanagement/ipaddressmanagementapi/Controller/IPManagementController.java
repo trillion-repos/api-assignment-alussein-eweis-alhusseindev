@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/api")
 public class IPManagementController {
 
-    private IPManagementService myIPManagementService;
+    private final IPManagementService myIPManagementService;
 
     //constructor
     public IPManagementController(IPManagementService myIPManagementService){

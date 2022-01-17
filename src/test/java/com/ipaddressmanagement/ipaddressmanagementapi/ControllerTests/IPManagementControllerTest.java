@@ -19,7 +19,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import org.junit.jupiter.api.Assertions;
 
-@WebMvcTest
+@WebMvcTest(IPManagementController.class)
 public class IPManagementControllerTest {
 
     @MockBean
@@ -29,7 +29,7 @@ public class IPManagementControllerTest {
     private MockMvc mvcMock;
 
     @Test
-    void controllerNotNull(){
+    void controllerNotNullTest(){
         Assertions.assertNotNull(myIPManagementService);
     }
 
@@ -42,7 +42,7 @@ public class IPManagementControllerTest {
 
     @Test
     void newIPEndpointTest() throws Exception{
-        RequestBuilder myRequest = MockMvcRequestBuilders.post("/new", "10.0.0.1/24");
+        RequestBuilder myRequest = MockMvcRequestBuilders.post("/new").content("10.0.0.1/24");
         MvcResult myRequestResults = mvcMock.perform(myRequest).andReturn();
         Assertions.assertEquals(myRequestResults.getResponse().getContentAsString(), myRequestResults.getResponse().getContentAsString());
     }
@@ -51,6 +51,14 @@ public class IPManagementControllerTest {
     @Test
     void acquireIPEndpointTest() throws Exception{
         RequestBuilder myRequest = MockMvcRequestBuilders.patch("/acquire/{ipAddress}", "10.0.0.1");
+        MvcResult myRequestResults = mvcMock.perform(myRequest).andReturn();
+        Assertions.assertEquals(myRequestResults.getResponse().getContentAsString() ,myRequestResults.getResponse().getContentAsString());
+    }
+
+
+    @Test
+    void releaseIPEndpointTest() throws Exception{
+        RequestBuilder myRequest = MockMvcRequestBuilders.patch("/release/{ipAddress}", "10.0.0.1");
         MvcResult myRequestResults = mvcMock.perform(myRequest).andReturn();
         Assertions.assertEquals(myRequestResults.getResponse().getContentAsString() ,myRequestResults.getResponse().getContentAsString());
     }
